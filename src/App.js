@@ -6,7 +6,7 @@ const TodoApp = () => {
   const [newTodo, setNewTodo] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const API_BASE = 'http://localhost:3000';
+  const API_BASE = 'https://devsoc-todo-backend.onrender.com';
 
   // Fetch all todos
   const fetchTodos = async () => {
