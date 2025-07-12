@@ -1,38 +1,370 @@
-.App {
-  text-align: center;
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  overflow: hidden;
+  height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* Main Container */
+.container {
   min-height: 100vh;
+  max-height: 100vh;
+  background-color: #f7fffc;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 4.5vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: #001c11;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Todo Container */
+.todo-container {
+  width: 100%;
+  max-width: 580px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+.header {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header-input {
+  width: 100%;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #374151;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: default;
+}
+
+.todo-list {
+  height: 256px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af #f3f4f6;
+}
+
+.todo-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 4px;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 4px;
+}
+
+.todo-list::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+.empty-state {
+  padding: 16px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.todos-container {
+  padding: 16px;
+}
+
+/* Todo Item */
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 4px 0;
+}
+
+.todo-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+}
+
+.checkbox.completed {
+  background-color: #10b981;
+  border-color: #10b981;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.todo-text {
+  flex: 1;
+  color: #374151;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.todo-text.completed {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.delete-button {
+  padding: 4px;
+  color: #9ca3af;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s;
+  background: transparent;
+  border: none;
+}
+
+.delete-button.hovered {
+  color: #ef4444;
+  opacity: 1;
+}
+
+/* Footer */
+.footer {
+  padding: 16px;
+  background-color: #dcfce7;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+}
+
+.footer-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #4ade80;
+  border-radius: 4px;
+  margin-right: 12px;
+}
+
+.footer-input {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #374151;
+  font-size: 16px;
+}
+
+.add-button {
+  margin-left: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-button.empty {
+  background-color: #d1d5db;
+  color: #6b7280;
+}
+
+.add-button.ready {
+  background-color: #10b981;
+  color: white;
+}
+
+.add-button.ready:hover {
+  background-color: #059669;
+}
+
+.add-button-dot {
+  width: 8px;
+  height: 8px;
+  background-color: currentColor;
+  border-radius: 50%;
+}
+
+/* Ground Animation */
+.ground-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 28vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.ground-animation {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  display: flex;
+  animation: scrollGroundSeamless 45s linear infinite;
+}
+
+.ground-image {
+  height: 100%;
+  width: 16.5%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Cat */
+.cat {
+  position: absolute;
+  bottom: 19.4vh;
+  left: 6.25vw;
+  width: 13.5vw;
+  height: auto;
+  z-index: 2;
+}
+
+/* Keyframe Animation */
+@keyframes scrollGroundSeamless {
+  0% {
+    transform: translateX(0);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.875rem;
+  }
+  
+  .todo-container {
+    max-width: 90%;
+    margin: 0 20px;
+  }
+  
+  .container {
+    padding-top: 3vh;
+  }
+  
+  .cat {
+    bottom: 18vh;
+    left: 8vw;
+    width: 25vw;
+  }
+  
+  .ground-container {
+    height: 25vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .todo-container {
+    max-width: 95%;
+    margin: 0 10px;
+  }
+  
+  .container {
+    padding-top: 2vh;
+  }
+  
+  .cat {
+    bottom: 15vh;
+    left: 10vw;
+    width: 30vw;
+  }
+  
+  .ground-container {
+    height: 22vh;
+  }
+}
+
+/* Large Display Adjustments */
+@media (min-width: 1920px) {
+  .container {
+    padding-top: 5vh;
+  }
+  
+  .title {
+    font-size: clamp(2.25rem, 3vw, 3rem);
+  }
+  
+  .todo-container {
+    max-width: min(580px, 30vw);
+  }
+  
+  .cat {
+    bottom: 19.3vh;
+    left: 5.5vw;
+    width: 15vw;
+  }
+  
+  .ground-container {
+    height: 30vh;
+  }
+}
+
+/* Ultra-wide Display Adjustments */
+@media (min-width: 2560px) {
+  .container {
+    padding-top: 5.5vh;
+  }
+  
+  .title {
+    font-size: clamp(2.5rem, 3.5vw, 4rem);
+  }
+  
+  .todo-container {
+    max-width: min(650px, 25vw);
+  }
+  
+  .cat {
+    bottom: 21vh;
+    left: 5vw;
+    width: 12vw;
+  }
+  
+  .ground-container {
+    height: 32vh;
   }
 }

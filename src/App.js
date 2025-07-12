@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './App.css';
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
@@ -87,215 +88,34 @@ const TodoApp = () => {
     }
   };
 
-  const styles = {
-    container: {
-      minHeight: '100vh',
-      maxHeight: '100vh',
-      backgroundColor: '#f7fffc',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      paddingTop: '64px',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-      position: 'relative',
-      overflow: 'hidden'
-    },
-    title: {
-      fontSize: '2.25rem',
-      fontWeight: 'bold',
-      color: '#001c11',
-      marginBottom: '28px',
-      position: 'relative',
-      zIndex: 10
-    },
-    todoContainer: {
-      width: '100%',
-      maxWidth: '580px',
-      backgroundColor: 'white',
-      borderRadius: '8px',
-      boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-      overflow: 'hidden',
-      position: 'relative',
-      zIndex: 10
-    },
-    header: {
-      padding: '16px',
-      borderBottom: '1px solid #e5e7eb'
-    },
-    headerInput: {
-      width: '100%',
-      fontSize: '1.125rem',
-      fontWeight: '500',
-      color: '#374151',
-      backgroundColor: 'transparent',
-      border: 'none',
-      outline: 'none',
-      cursor: 'default'
-    },
-    todoList: {
-      height: '256px',
-      overflowY: 'auto',
-      scrollbarWidth: 'thin',
-      scrollbarColor: '#9ca3af #f3f4f6'
-    },
-    emptyState: {
-      padding: '16px',
-      textAlign: 'center',
-      color: '#6b7280'
-    },
-    todosContainer: {
-      padding: '16px'
-    },
-    todoItem: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      marginBottom: '12px',
-      padding: '4px 0'
-    },
-    todoLeft: {
-      display: 'flex',
-      alignItems: 'center',
-      flex: 1
-    },
-    checkbox: {
-      width: '24px',
-      height: '24px',
-      border: '2px solid #d1d5db',
-      borderRadius: '4px',
-      marginRight: '12px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      cursor: 'pointer',
-      transition: 'all 0.2s'
-    },
-    checkboxCompleted: {
-      backgroundColor: '#10b981',
-      borderColor: '#10b981',
-      color: 'white'
-    },
-    todoText: {
-      flex: 1,
-      color: '#374151'
-    },
-    todoTextCompleted: {
-      textDecoration: 'line-through',
-      color: '#6b7280'
-    },
-    deleteButton: {
-      padding: '4px',
-      color: '#9ca3af',
-      cursor: 'pointer',
-      opacity: 0,
-      transition: 'all 0.2s'
-    },
-    deleteButtonHover: {
-      color: '#ef4444',
-      opacity: 1
-    },
-    footer: {
-      padding: '16px',
-      backgroundColor: '#dcfce7',
-      borderTop: '1px solid #e5e7eb'
-    },
-    footerContent: {
-      display: 'flex',
-      alignItems: 'center'
-    },
-    footerCheckbox: {
-      width: '24px',
-      height: '24px',
-      border: '2px solid #4ade80',
-      borderRadius: '4px',
-      marginRight: '12px'
-    },
-    footerInput: {
-      flex: 1,
-      backgroundColor: 'transparent',
-      border: 'none',
-      outline: 'none',
-      color: '#374151',
-      fontSize: '16px'
-    },
-    addButton: {
-      marginLeft: '12px',
-      width: '32px',
-      height: '32px',
-      borderRadius: '50%',
-      border: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      cursor: 'pointer',
-      transition: 'all 0.2s'
-    },
-    addButtonEmpty: {
-      backgroundColor: '#d1d5db',
-      color: '#6b7280'
-    },
-    addButtonReady: {
-      backgroundColor: '#10b981',
-      color: 'white'
-    },
-    addButtonReady_hover: {
-      backgroundColor: '#059669'
-    },
-    groundContainer: {
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      width: '100%',
-      height: '250px',
-      overflow: 'hidden',
-      zIndex: 1
-    },
-    groundImage: {
-      position: 'absolute',
-      bottom: 0,
-      height: '100%',
-      width: '45%',
-      objectFit: 'cover',
-    },
-    cat: {
-      position: 'absolute',
-      bottom: '190px',
-      left: '90px',
-      width: '250px',
-      height: 'auto',
-      zIndex: 0,
-    }
-  };
-
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Collaborative TODO</h1>
+    <div className="container">
+      <h1 className="title">Collaborative TODO</h1>
       
-      <div style={styles.todoContainer}>
+      <div className="todo-container">
         {/* Header */}
-        <div style={styles.header}>
+        <div className="header">
           <input
-            style={styles.headerInput}
+            className="header-input"
             value="Todo"
             readOnly
           />
         </div>
 
         {/* Scrollable Todo List */}
-        <div style={styles.todoList}>
+        <div className="todo-list">
           {todos.length === 0 ? (
-            <div style={styles.emptyState}>
+            <div className="empty-state">
               No todos yet. Add one below!
             </div>
           ) : (
-            <div style={styles.todosContainer}>
+            <div className="todos-container">
               {todos.map((todo) => (
                 <TodoItem
                   key={todo.id}
                   todo={todo}
                   onToggle={toggleTodo}
                   onDelete={deleteTodo}
-                  styles={styles}
                 />
               ))}
             </div>
@@ -303,9 +123,9 @@ const TodoApp = () => {
         </div>
 
         {/* Add Todo Footer */}
-        <div style={styles.footer}>
-          <div style={styles.footerContent}>
-            <div style={styles.footerCheckbox}></div>
+        <div className="footer">
+          <div className="footer-content">
+            <div className="footer-checkbox"></div>
             <input
               type="text"
               placeholder="Add a task"
@@ -313,37 +133,19 @@ const TodoApp = () => {
               onChange={(e) => setNewTodo(e.target.value)}
               onKeyPress={handleKeyPress}
               disabled={loading}
-              style={styles.footerInput}
+              className="footer-input"
             />
             <button
               onClick={addTodo}
               disabled={loading}
-              style={{
-                ...styles.addButton,
-                ...(newTodo.trim() ? styles.addButtonReady : styles.addButtonEmpty)
-              }}
-              onMouseEnter={(e) => {
-                if (newTodo.trim()) {
-                  e.target.style.backgroundColor = '#059669';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (newTodo.trim()) {
-                  e.target.style.backgroundColor = '#10b981';
-                }
-              }}
+              className={`add-button ${newTodo.trim() ? 'ready' : 'empty'}`}
             >
               {newTodo.trim() ? (
                 <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                 </svg>
               ) : (
-                <div style={{
-                  width: '8px',
-                  height: '8px',
-                  backgroundColor: 'currentColor',
-                  borderRadius: '50%'
-                }}></div>
+                <div className="add-button-dot"></div>
               )}
             </button>
           </div>
@@ -351,98 +153,18 @@ const TodoApp = () => {
       </div>
 
       {/* Animated Ground */}
-      <div style={styles.groundContainer}>
-        <div style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          width: '200%',
-          height: '100%',
-          display: 'flex',
-          animation: 'scrollGroundSeamless 45s linear infinite'
-        }}>
+      <div className="ground-container">
+        <div className="ground-animation">
           {/* First set of images */}
-          <img 
-            src="/ground.png" 
-            alt="Ground" 
-            style={{
-              height: '100%',
-              width: '22.5%',
-              objectFit: 'cover',
-              flexShrink: 0
-            }} 
-          />
-          <img 
-            src="/ground.png" 
-            alt="Ground" 
-            style={{
-              height: '100%',
-              width: '22.5%',
-              objectFit: 'cover',
-              flexShrink: 0
-            }} 
-          />
-          <img 
-            src="/ground.png" 
-            alt="Ground" 
-            style={{
-              height: '100%',
-              width: '22.5%',
-              objectFit: 'cover',
-              flexShrink: 0
-            }} 
-          />
-          <img 
-            src="/ground.png" 
-            alt="Ground" 
-            style={{
-              height: '100%',
-              width: '22.5%',
-              objectFit: 'cover',
-              flexShrink: 0
-            }} 
-          />
+          <img src="/ground.png" alt="Ground" className="ground-image" />
+          <img src="/ground.png" alt="Ground" className="ground-image" />
+          <img src="/ground.png" alt="Ground" className="ground-image" />
+          <img src="/ground.png" alt="Ground" className="ground-image" />
           {/* Duplicate set for seamless loop */}
-          <img 
-            src="/ground.png" 
-            alt="Ground" 
-            style={{
-              height: '100%',
-              width: '22.5%',
-              objectFit: 'cover',
-              flexShrink: 0
-            }} 
-          />
-          <img 
-            src="/ground.png" 
-            alt="Ground" 
-            style={{
-              height: '100%',
-              width: '22.5%',
-              objectFit: 'cover',
-              flexShrink: 0
-            }} 
-          />
-          <img 
-            src="/ground.png" 
-            alt="Ground" 
-            style={{
-              height: '100%',
-              width: '22.5%',
-              objectFit: 'cover',
-              flexShrink: 0
-            }} 
-          />
-          <img 
-            src="/ground.png" 
-            alt="Ground" 
-            style={{
-              height: '100%',
-              width: '22.5%',
-              objectFit: 'cover',
-              flexShrink: 0
-            }} 
-          />
+          <img src="/ground.png" alt="Ground" className="ground-image" />
+          <img src="/ground.png" alt="Ground" className="ground-image" />
+          <img src="/ground.png" alt="Ground" className="ground-image" />
+          <img src="/ground.png" alt="Ground" className="ground-image" />
         </div>
       </div>
 
@@ -450,67 +172,26 @@ const TodoApp = () => {
       <img 
         src="/cat.gif" 
         alt="Walking Cat" 
-        style={styles.cat}
+        className="cat"
       />
-
-      <style dangerouslySetInnerHTML={{
-        __html: `
-          body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            height: 100vh;
-          }
-          html {
-            overflow: hidden;
-            height: 100vh;
-          }
-          .todo-list::-webkit-scrollbar {
-            width: 8px;
-          }
-          .todo-list::-webkit-scrollbar-track {
-            background: #f3f4f6;
-            border-radius: 4px;
-          }
-          .todo-list::-webkit-scrollbar-thumb {
-            background: #9ca3af;
-            border-radius: 4px;
-          }
-          .todo-list::-webkit-scrollbar-thumb:hover {
-            background: #6b7280;
-          }
-          
-          @keyframes scrollGroundSeamless {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(-50%);
-            }
-          }
-        `
-      }} />
     </div>
   );
 };
 
 // Separate component for todo items to handle hover states
-const TodoItem = ({ todo, onToggle, onDelete, styles }) => {
+const TodoItem = ({ todo, onToggle, onDelete }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div 
-      style={styles.todoItem}
+      className="todo-item"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div style={styles.todoLeft}>
+      <div className="todo-left">
         <button
           onClick={() => onToggle(todo.id)}
-          style={{
-            ...styles.checkbox,
-            ...(todo.completed ? styles.checkboxCompleted : {})
-          }}
+          className={`checkbox ${todo.completed ? 'completed' : ''}`}
         >
           {todo.completed && (
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -518,19 +199,13 @@ const TodoItem = ({ todo, onToggle, onDelete, styles }) => {
             </svg>
           )}
         </button>
-        <span style={{
-          ...styles.todoText,
-          ...(todo.completed ? styles.todoTextCompleted : {})
-        }}>
+        <span className={`todo-text ${todo.completed ? 'completed' : ''}`}>
           {todo.desc}
         </span>
       </div>
       <button
         onClick={() => onDelete(todo.id)}
-        style={{
-          ...styles.deleteButton,
-          ...(isHovered ? styles.deleteButtonHover : {})
-        }}
+        className={`delete-button ${isHovered ? 'hovered' : ''}`}
       >
         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
