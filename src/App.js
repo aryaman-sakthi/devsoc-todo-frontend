@@ -95,13 +95,17 @@ const TodoApp = () => {
       flexDirection: 'column',
       alignItems: 'center',
       paddingTop: '64px',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      position: 'relative',
+      overflow: 'hidden'
     },
     title: {
       fontSize: '2.25rem',
       fontWeight: 'bold',
       color: '#374151',
-      marginBottom: '32px'
+      marginBottom: '32px',
+      position: 'relative',
+      zIndex: 10
     },
     todoContainer: {
       width: '100%',
@@ -109,7 +113,9 @@ const TodoApp = () => {
       backgroundColor: 'white',
       borderRadius: '8px',
       boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      position: 'relative',
+      zIndex: 10
     },
     header: {
       padding: '16px',
@@ -233,6 +239,31 @@ const TodoApp = () => {
     },
     addButtonReady_hover: {
       backgroundColor: '#059669'
+    },
+    groundContainer: {
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      width: '100%',
+      height: '200px',
+      overflow: 'hidden',
+      zIndex: 1
+    },
+    groundImage: {
+      position: 'absolute',
+      bottom: 0,
+      height: '100%',
+      width: '45%',
+      objectFit: 'cover',
+      animation: 'scrollGround 15s linear infinite'
+    },
+    cat: {
+      position: 'absolute',
+      bottom: '170px',
+      left: '70px',
+      width: '250px',
+      height: 'auto',
+      zIndex: 0,
     }
   };
 
@@ -319,6 +350,47 @@ const TodoApp = () => {
         </div>
       </div>
 
+      {/* Animated Ground */}
+      <div style={styles.groundContainer}>
+        <img 
+          src="/ground_v2.png" 
+          alt="Ground" 
+          style={{...styles.groundImage, left: '0'}} 
+        />
+        <img 
+          src="/ground_v2.png" 
+          alt="Ground" 
+          style={{...styles.groundImage, left: '33.33%'}} 
+        />
+        <img 
+          src="/ground_v2.png" 
+          alt="Ground" 
+          style={{...styles.groundImage, left: '66.66%'}} 
+        />
+        <img 
+          src="/ground_v2.png" 
+          alt="Ground" 
+          style={{...styles.groundImage, left: '100%'}} 
+        />
+        <img 
+          src="/ground_v2.png" 
+          alt="Ground" 
+          style={{...styles.groundImage, left: '133.33%'}} 
+        />
+        <img 
+          src="/ground_v2.png" 
+          alt="Ground" 
+          style={{...styles.groundImage, left: '166.66%'}} 
+        />
+      </div>
+
+      {/* Walking Cat */}
+      <img 
+        src="/cat.gif" 
+        alt="Walking Cat" 
+        style={styles.cat}
+      />
+
       <style dangerouslySetInnerHTML={{
         __html: `
           .todo-list::-webkit-scrollbar {
@@ -334,6 +406,15 @@ const TodoApp = () => {
           }
           .todo-list::-webkit-scrollbar-thumb:hover {
             background: #6b7280;
+          }
+          
+          @keyframes scrollGround {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-33.33%);
+            }
           }
         `
       }} />
