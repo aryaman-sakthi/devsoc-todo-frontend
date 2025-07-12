@@ -91,7 +91,7 @@ const TodoApp = () => {
     container: {
       minHeight: '100vh',
       maxHeight: '100vh',
-      backgroundColor: '#e5e7eb',
+      backgroundColor: '#f7fffc',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -103,14 +103,14 @@ const TodoApp = () => {
     title: {
       fontSize: '2.25rem',
       fontWeight: 'bold',
-      color: '#374151',
-      marginBottom: '32px',
+      color: '#001c11',
+      marginBottom: '28px',
       position: 'relative',
       zIndex: 10
     },
     todoContainer: {
       width: '100%',
-      maxWidth: '448px',
+      maxWidth: '580px',
       backgroundColor: 'white',
       borderRadius: '8px',
       boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
@@ -256,12 +256,11 @@ const TodoApp = () => {
       height: '100%',
       width: '45%',
       objectFit: 'cover',
-      animation: 'scrollGround 15s linear infinite'
     },
     cat: {
       position: 'absolute',
-      bottom: '170px',
-      left: '70px',
+      bottom: '190px',
+      left: '90px',
       width: '250px',
       height: 'auto',
       zIndex: 0,
@@ -360,7 +359,7 @@ const TodoApp = () => {
           width: '200%',
           height: '100%',
           display: 'flex',
-          animation: 'scrollGroundSeamless 10s linear infinite'
+          animation: 'scrollGroundSeamless 45s linear infinite'
         }}>
           {/* First set of images */}
           <img 
