@@ -90,6 +90,7 @@ const TodoApp = () => {
   const styles = {
     container: {
       minHeight: '100vh',
+      maxHeight: '100vh',
       backgroundColor: '#e5e7eb',
       display: 'flex',
       flexDirection: 'column',
@@ -245,7 +246,7 @@ const TodoApp = () => {
       bottom: 0,
       left: 0,
       width: '100%',
-      height: '200px',
+      height: '250px',
       overflow: 'hidden',
       zIndex: 1
     },
@@ -352,36 +353,98 @@ const TodoApp = () => {
 
       {/* Animated Ground */}
       <div style={styles.groundContainer}>
-        <img 
-          src="/ground_v2.png" 
-          alt="Ground" 
-          style={{...styles.groundImage, left: '0'}} 
-        />
-        <img 
-          src="/ground_v2.png" 
-          alt="Ground" 
-          style={{...styles.groundImage, left: '33.33%'}} 
-        />
-        <img 
-          src="/ground_v2.png" 
-          alt="Ground" 
-          style={{...styles.groundImage, left: '66.66%'}} 
-        />
-        <img 
-          src="/ground_v2.png" 
-          alt="Ground" 
-          style={{...styles.groundImage, left: '100%'}} 
-        />
-        <img 
-          src="/ground_v2.png" 
-          alt="Ground" 
-          style={{...styles.groundImage, left: '133.33%'}} 
-        />
-        <img 
-          src="/ground_v2.png" 
-          alt="Ground" 
-          style={{...styles.groundImage, left: '166.66%'}} 
-        />
+        <div style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '200%',
+          height: '100%',
+          display: 'flex',
+          animation: 'scrollGroundSeamless 10s linear infinite'
+        }}>
+          {/* First set of images */}
+          <img 
+            src="/ground.png" 
+            alt="Ground" 
+            style={{
+              height: '100%',
+              width: '22.5%',
+              objectFit: 'cover',
+              flexShrink: 0
+            }} 
+          />
+          <img 
+            src="/ground.png" 
+            alt="Ground" 
+            style={{
+              height: '100%',
+              width: '22.5%',
+              objectFit: 'cover',
+              flexShrink: 0
+            }} 
+          />
+          <img 
+            src="/ground.png" 
+            alt="Ground" 
+            style={{
+              height: '100%',
+              width: '22.5%',
+              objectFit: 'cover',
+              flexShrink: 0
+            }} 
+          />
+          <img 
+            src="/ground.png" 
+            alt="Ground" 
+            style={{
+              height: '100%',
+              width: '22.5%',
+              objectFit: 'cover',
+              flexShrink: 0
+            }} 
+          />
+          {/* Duplicate set for seamless loop */}
+          <img 
+            src="/ground.png" 
+            alt="Ground" 
+            style={{
+              height: '100%',
+              width: '22.5%',
+              objectFit: 'cover',
+              flexShrink: 0
+            }} 
+          />
+          <img 
+            src="/ground.png" 
+            alt="Ground" 
+            style={{
+              height: '100%',
+              width: '22.5%',
+              objectFit: 'cover',
+              flexShrink: 0
+            }} 
+          />
+          <img 
+            src="/ground.png" 
+            alt="Ground" 
+            style={{
+              height: '100%',
+              width: '22.5%',
+              objectFit: 'cover',
+              flexShrink: 0
+            }} 
+          />
+          <img 
+            src="/ground.png" 
+            alt="Ground" 
+            style={{
+              height: '100%',
+              width: '22.5%',
+              objectFit: 'cover',
+              flexShrink: 0
+            }} 
+          />
+        </div>
       </div>
 
       {/* Walking Cat */}
@@ -393,6 +456,16 @@ const TodoApp = () => {
 
       <style dangerouslySetInnerHTML={{
         __html: `
+          body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+          }
+          html {
+            overflow: hidden;
+            height: 100vh;
+          }
           .todo-list::-webkit-scrollbar {
             width: 8px;
           }
@@ -408,12 +481,12 @@ const TodoApp = () => {
             background: #6b7280;
           }
           
-          @keyframes scrollGround {
+          @keyframes scrollGroundSeamless {
             0% {
               transform: translateX(0);
             }
             100% {
-              transform: translateX(-33.33%);
+              transform: translateX(-50%);
             }
           }
         `
